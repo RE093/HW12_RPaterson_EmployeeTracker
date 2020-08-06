@@ -12,14 +12,8 @@ let employeeArr = [];
 
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
-
-  // Your port; if not 3306
-  port: process.env.DB_PORT,
-
-  // Your username
+  port: process.env.DB_PORT || 8000,
   user: process.env.DB_USER,
-
-  // Your password
   password: process.env.DB_PASSWORD,
   database: process.env.DATABASE
 });
@@ -27,7 +21,6 @@ const connection = mysql.createConnection({
 connection.connect(function(err) {
   if (err) throw err;
   console.log("connected as id " + connection.threadId);
-
 
   doWhat();
 });
